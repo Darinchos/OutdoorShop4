@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36603.0 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutdoorShop", "OutdoorShop\OutdoorShop.csproj", "{1C8D4AC2-E897-4D46-9C00-E00D1754ECED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C8D4AC2-E897-4D46-9C00-E00D1754ECED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C8D4AC2-E897-4D46-9C00-E00D1754ECED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C8D4AC2-E897-4D46-9C00-E00D1754ECED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C8D4AC2-E897-4D46-9C00-E00D1754ECED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {31420B85-B9D2-4D57-B019-0AED2EA4B59D}
+	EndGlobalSection
+EndGlobal

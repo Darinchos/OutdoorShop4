@@ -1,0 +1,151 @@
+﻿@model IEnumerable<OutdoorShop.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Количка";
+}
+
+<div class="cart-page">
+
+    ```
+    <div class="cart-header">
+        <span class="hero-badge">OUTDOORSHOP</span>
+        <h1>🛒 Твоята количка</h1>
+        <p>Провери продуктите си преди да завършиш поръчката.</p>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="empty-state">
+
+            <div class="empty-icon">🛒</div>
+
+            <h2>Количката е празна</h2>
+
+            <p>
+                Все още нямаш добавени продукти.
+            </p>
+
+            <a asp-controller="Products"
+               asp-action="Index"
+               class="btn btn-success">
+                🛍️ Разгледай продуктите
+            </a>
+
+        </div>
+    }
+    else
+    {
+        <div class="cart-layout">
+
+            <div class="cart-items">
+
+                @foreach (var item in Model)
+                {
+                    <div class="cart-item">
+
+                        <div class="cart-item-image">
+
+                            @if (!string.IsNullOrEmpty(item.ImageUrl))
+                            {
+                                <img src="@item.ImageUrl"
+                                     alt="@item.ProductName" />
+                            }
+                            else
+                            {
+                                <span>🏕️</span>
+                            }
+
+                        </div>
+
+
+                        <div class="cart-item-info">
+
+                            <h3>
+                                @item.ProductName
+                            </h3>
+
+                            <p class="cart-item-price">
+                                @item.Price.ToString("0.00") лв.
+                            </p>
+
+                            <div class="cart-quantity">
+                                Количество:
+                                <strong>@item.Quantity</strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="cart-item-total">
+
+                            <strong>
+                                @((item.Price * item.Quantity).ToString("0.00")) лв.
+                            </strong>
+
+                            <form asp-action="Remove"
+                                  method="post">
+
+                                <input type="hidden"
+                                       name="productId"
+                                       value="@item.ProductId" />
+
+                                <button type="submit"
+                                        class="btn btn-sm btn-danger">
+                                    🗑️ Премахни
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+
+
+            <div class="cart-summary">
+
+                <h2>Обобщение</h2>
+
+                <div class="summary-row">
+
+                    <span>Продукти</span>
+
+                    <span>
+                        @Model.Sum(x => x.Quantity)
+                    </span>
+
+                </div>
+
+                <div class="summary-divider"></div>
+
+                <div class="summary-total">
+
+                    <span>Общо</span>
+
+                    <strong>
+                        @Model.Sum(x => x.Price * x.Quantity).ToString("0.00") лв.
+                    </strong>
+
+                </div>
+
+                <a asp-controller="Order"
+                   asp-action="Checkout"
+                   class="btn btn-success checkout-button">
+                    Продължи към поръчка →
+                </a>
+
+                <a asp-controller="Products"
+                   asp-action="Index"
+                   class="continue-shopping">
+                    ← Продължи пазаруването
+                </a>
+
+            </div>
+
+        </div>
+    }
+    ```
+
+</div>

@@ -1,0 +1,75 @@
+﻿@model OutdoorShop.Models.Product
+
+@{
+    ViewData["Title"] = "Изтриване на продукт";
+}
+
+<div class="container mt-4">
+
+    <h1>🗑️ Изтриване на продукт</h1>
+
+    <div class="alert alert-danger">
+        <strong>Внимание!</strong>
+        Сигурен ли си, че искаш да изтриеш този продукт?
+    </div>
+
+    <div class="card mb-4">
+
+        <div class="card-body">
+
+            <h3>@Model.Name</h3>
+
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Model.ImageUrl"
+                     alt="@Model.Name"
+                     style="max-width: 250px; max-height: 250px;"
+                     class="img-fluid mb-3" />
+            }
+
+            <p>
+                <strong>Описание:</strong>
+                @Model.Description
+            </p>
+
+            <p>
+                <strong>Цена:</strong>
+                @Model.Price.ToString("0.00") лв.
+            </p>
+
+            <p>
+                <strong>Наличност:</strong>
+                @Model.Stock
+            </p>
+
+            @if (Model.Category != null)
+            {
+                <p>
+                    <strong>Категория:</strong>
+                    @Model.Category.Name
+                </p>
+            }
+
+        </div>
+
+    </div>
+
+    <form asp-action="Delete"
+          method="post">
+
+        <input type="hidden"
+               asp-for="Id" />
+
+        <button type="submit"
+                class="btn btn-danger">
+            🗑️ Да, изтрий
+        </button>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Отказ
+        </a>
+
+    </form>
+
+</div>

@@ -1,0 +1,109 @@
+﻿@model IEnumerable<OutdoorShop.Models.Category>
+
+@{
+    ViewData["Title"] = "Категории";
+}
+
+<div class="categories-page">
+
+    ```
+    <div class="categories-header">
+
+        <div>
+            <span class="hero-badge">OUTDOORSHOP</span>
+
+            <h1>🏷️ Категории</h1>
+
+            <p>
+                Избери категория и открий подходящата екипировка.
+            </p>
+        </div>
+
+        <a asp-action="Create"
+           class="btn btn-success">
+            ➕ Добави категория
+        </a>
+
+    </div>
+
+
+    @if (!Model.Any())
+    {
+        <div class="empty-state">
+
+            <div class="empty-icon">
+                🏷️
+            </div>
+
+            <h2>
+                Все още няма категории
+            </h2>
+
+            <p>
+                Добави първата категория към магазина.
+            </p>
+
+            <a asp-action="Create"
+               class="btn btn-success">
+                ➕ Добави категория
+            </a>
+
+        </div>
+    }
+    else
+    {
+        <div class="category-grid">
+
+            @foreach (var category in Model)
+            {
+                <div class="category-card">
+
+                    <div class="category-icon">
+                        🌲
+                    </div>
+
+                    <div class="category-content">
+
+                        <h2>
+                            @category.Name
+                        </h2>
+
+                        @if (!string.IsNullOrEmpty(category.Description))
+                        {
+                            <p>
+                                @category.Description
+                            </p>
+                        }
+                        else
+                        {
+                            <p>
+                                Outdoor екипировка и продукти.
+                            </p>
+                        }
+
+                    </div>
+
+                    <div class="category-actions">
+
+                        <a asp-action="Edit"
+                           asp-route-id="@category.Id"
+                           class="btn btn-primary">
+                            ✏️ Edit
+                        </a>
+
+                        <a asp-action="Delete"
+                           asp-route-id="@category.Id"
+                           class="btn btn-danger">
+                            🗑️ Delete
+                        </a>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+    ```
+
+</div>

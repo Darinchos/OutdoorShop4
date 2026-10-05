@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Поръчката е приета";
+}
+
+<div class="success-page">
+
+    <div class="success-card">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <span class="hero-badge">
+            OUTDOORSHOP
+        </span>
+
+        <h1>
+            Поръчката е приета!
+        </h1>
+
+        <p class="success-main-text">
+            Благодарим ти за поръчката. 🏕️
+        </p>
+
+        <p class="success-description">
+            Поръчката ти беше успешно записана.
+            Ще се свържем с теб за потвърждение и доставка.
+        </p>
+
+        <div class="success-actions">
+
+            <a asp-controller="Products"
+               asp-action="Index"
+               class="btn btn-success">
+                🛍️ Продължи пазаруването
+            </a>
+
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="btn btn-outline-dark">
+                🏠 Към началото
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

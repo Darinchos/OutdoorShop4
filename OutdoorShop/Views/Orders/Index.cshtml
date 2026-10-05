@@ -1,0 +1,121 @@
+﻿@model IEnumerable<OutdoorShop.Models.Order>
+
+@{
+    ViewData["Title"] = "Поръчки";
+}
+
+<div class="orders-page">
+
+    ```
+    <div class="orders-header">
+
+        <div>
+            <span class="hero-badge">OUTDOORSHOP ADMIN</span>
+
+            <h1>📦 Поръчки</h1>
+
+            <p>
+                Управлявай всички направени поръчки от магазина.
+            </p>
+        </div>
+
+    </div>
+
+
+    @if (!Model.Any())
+    {
+        <div class="empty-state">
+
+            <div class="empty-icon">
+                📦
+            </div>
+
+            <h2>
+                Все още няма поръчки
+            </h2>
+
+            <p>
+                Когато някой направи поръчка,
+                тя ще се появи тук.
+            </p>
+
+        </div>
+    }
+    else
+    {
+        <div class="orders-card">
+
+            <div class="table-responsive">
+
+                <table class="table orders-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Клиент</th>
+                            <th>Email</th>
+                            <th>Телефон</th>
+                            <th>Общо</th>
+                            <th>Дата</th>
+                            <th></th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var order in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    <strong>
+                                        #@order.Id
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    @order.CustomerName
+                                </td>
+
+                                <td>
+                                    @order.Email
+                                </td>
+
+                                <td>
+                                    @order.Phone
+                                </td>
+
+                                <td>
+                                    <strong class="order-price">
+                                        @order.TotalPrice.ToString("0.00") лв.
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    @order.CreatedAt.ToString("dd.MM.yyyy HH:mm")
+                                </td>
+
+                                <td>
+                                    <a asp-action="Details"
+                                       asp-route-id="@order.Id"
+                                       class="btn btn-sm btn-primary">
+                                        👁️
+                                    </a>
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+    }
+    ```
+
+</div>
